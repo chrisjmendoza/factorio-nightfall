@@ -153,6 +153,8 @@ local function restore(surface_index, to_vanilla)
 end
 
 local function restore_all(to_vanilla)
+	storage.originals = storage.originals or {}
+
 	-- Collected first, because restore() clears entries as it goes.
 	local held = {}
 	for surface_index in pairs(storage.originals) do
@@ -224,6 +226,10 @@ end
 -- another mod, a console command -- is corrected on the next pass instead of
 -- being silently kept.
 local function reconcile()
+	-- Every path into the mod runs through here, so the one table everything
+	-- depends on is guaranteed in one place rather than at each caller.
+	storage.originals = storage.originals or {}
+
 	local enabled = settings.global["nightfall-enabled"].value
 
 	for surface_index in pairs(storage.originals) do
@@ -274,7 +280,9 @@ end)
 -- The surface is already gone, so there is nothing to hand back -- only a
 -- stale entry to drop before it outlives the thing it describes.
 script.on_event(defines.events.on_surface_deleted, function(event)
-	storage.originals[event.surface_index] = nil
+	if storage.originals then
+		storage.originals[event.surface_index] = nil
+	end
 end)
 
 -- Commands -------------------------------------------------------------------
@@ -326,7 +334,7 @@ commands.add_command("nightfall-debug",
 
 		local darkness = surface.darkness
 		local target = weights_for(darkness)
-		local original = storage.originals[surface.index]
+		local original = (storage.originals or {})[surface.index]
 
 		say(command, string.format(
 			"[Nightfall] surface %s (index %d) | enabled %s | eligible %s | platform %s",
