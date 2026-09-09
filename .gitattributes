@@ -1,0 +1,6 @@
+# Normalise to LF in the repository so clones on macOS and Linux are clean.
+* text=auto eol=lf
+
+# Binary assets git must not touch.
+*.png binary
+*.zip binary

@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 2026-09-08
+  Features:
+    - Nights are genuinely dark: unlit ground is allowed well past the brightness floor the engine normally holds it at, so lamps become equipment rather than decoration.
+    - Moonlight is cold. The colour lookup table is weighted per channel against the surface darkness, so red falls away as night comes on while blue holds, and noon stays exactly as neutral as it was.
+    - A golden hour through dawn and dusk, laid over the day-to-night ramp as a hump rather than reached as a waypoint on a straight line between two profiles.
+    - Nauvis only unless told otherwise. Every Space Age planet has its own lighting and its own day length, so the rest are opt-in by name and space platforms are always skipped.
+    - Settings for the depth of night, the coolness of moonlight, golden hour and its strength, which surfaces are affected, and a solar multiplier for players who would rather darker nights did not cost them power.
+    - /nightfall-reset hands every surface back the lighting it had before the mod touched it; /nightfall-reset vanilla forces the engine defaults for a save where the stashed originals cannot be trusted.
+    - /nightfall-debug reports darkness, both profile mixes, the live and target channel weights, and the multiplier each colour channel is actually getting.

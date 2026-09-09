@@ -1,0 +1,14 @@
+{
+    "name": "Nightfall",
+    "version": "0.1.0",
+    "factorio_version": "2.0",
+    "dependencies": [
+        "base >= 2.0",
+        "? space-age"
+    ],
+    "title": "Nightfall",
+    "author": "chrisjmendoza",
+    "contact": "chrisjmendoza@gmail.com",
+    "homepage": "https://github.com/chrisjmendoza/factorio-nightfall",
+    "description": "Night that is worth lighting. Unlit ground goes genuinely dark and moonlight turns cold and blue, with a brief warm lift through dawn and dusk, so lamps become something you build because you need them rather than because they look nice. Nauvis only by default, and every change it makes can be handed back."
+}
